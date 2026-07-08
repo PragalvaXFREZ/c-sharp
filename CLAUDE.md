@@ -2,7 +2,8 @@
 
 Coursework repo for **CSC367 – .NET Centric Computing** (Semester VI). C# / .NET 8
 example projects, one per topic, developed on Ubuntu with VS Code. Syllabus lives in
-`syallubus.txt`; repo layout and naming rules live in `CONVENTIONS.md`.
+`syallubus.txt`; repo layout and naming rules live in `CONVENTIONS.md`; the unit-by-unit
+plan with Linux library-compatibility notes lives in `ROADMAP.md`.
 
 ## Rules
 
