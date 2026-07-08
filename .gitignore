@@ -1,0 +1,17 @@
+# Build outputs
+bin/
+obj/
+publish/
+TestResults/
+
+# IDE / user-specific files
+.vs/
+.idea/
+*.user
+*.suo
+
+# VS Code: ignore personal settings, keep shared run/debug config
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
