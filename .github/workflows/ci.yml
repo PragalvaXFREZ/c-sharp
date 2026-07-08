@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  agents-md-sync:
+    name: CLAUDE.md and AGENTS.md are byte-identical
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare files
+        run: cmp CLAUDE.md AGENTS.md
+
+  build:
+    name: Build cross-platform projects
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Build every non-Windows project
+        run: |
+          set -e
+          for proj in src/*/*.csproj; do
+            if grep -q 'net8.0-windows' "$proj"; then
+              echo "::notice::Skipping Windows-only project $proj"
+              continue
+            fi
+            dotnet build "$proj" --nologo
+          done
