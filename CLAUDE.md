@@ -15,10 +15,19 @@ plan with Linux library-compatibility notes lives in `ROADMAP.md`.
 3. Stay cross-platform: target `net8.0` only. No `net8.0-windows`, WinForms, or WPF —
    they don't build on this machine. (`ConsoleApp9` is a pre-existing exception; build
    other projects individually with `dotnet build src/<Name>` if the solution build fails.)
-4. This is a learning repo: prefer clear, idiomatic code over clever code, and keep a
+   When an exercise demands a GUI (WinForms), keep a console adaptation as the project's
+   `Program.cs` and put the real WinForms source in a `winforms/` subfolder excluded from
+   the build (`<Compile Remove="winforms/**" />` in the csproj). Run that version with
+   Mono, not `dotnet run` — .NET 8 has no WinForms on Linux:
+   `mcs -r:System.Windows.Forms -r:System.Drawing <file>.cs -out:app.exe && mono app.exe`.
+   See `src/ButtonEventDemo_1318/` for the pattern.
+4. Lab-exercise projects are named `<Concept>_1318` (PascalCase concept + roll number),
+   with the same `_1318` suffix on their namespaces — the lab reports require it. The
+   plain concept-only naming in `CONVENTIONS.md` applies to non-lab demo projects.
+5. This is a learning repo: prefer clear, idiomatic code over clever code, and keep a
    brief comment where it explains the concept being demonstrated.
-5. Don't modify `syallubus.txt`.
-6. `AGENTS.md` must be a byte-for-byte copy of this file. After any edit to
+6. Don't modify `syallubus.txt`.
+7. `AGENTS.md` must be a byte-for-byte copy of this file. After any edit to
    `CLAUDE.md`, run `cp CLAUDE.md AGENTS.md` — CI goes red if they differ.
 
 ## Commands
