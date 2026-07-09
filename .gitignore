@@ -15,3 +15,7 @@ TestResults/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Local reference material and office lock files
+met lab1.docx
+.~lock.*#
