@@ -7,9 +7,9 @@ plan with Linux library-compatibility notes lives in `ROADMAP.md`.
 
 ## Rules
 
-1. **Never add Claude attribution or aliases anywhere.** No `Co-Authored-By: Claude`
-   trailers, no "Generated with Claude Code" lines — not in commits, PRs, code
-   comments, or docs.
+1. **Never add AI-assistant attribution or aliases anywhere.** No Claude or Codex
+   names, abbreviations, `Co-Authored-By` trailers, or generated-by lines — not in
+   branch names, commits, PRs, code comments, or docs.
 2. Follow `CONVENTIONS.md`: new example = new PascalCase console project under `src/`,
    added to `College.sln` with `dotnet sln add`.
 3. Stay cross-platform: target `net8.0` only. No `net8.0-windows`, WinForms, or WPF —
