@@ -43,6 +43,8 @@ dotnet run --project src/EventExample
 
 That's it. `dotnet` compiles and runs in one step.
 
+For the database unit, follow [Unit 5 database setup on Ubuntu](UNIT5_UBUNTU_GUIDE.md).
+
 ## 4. Editor (optional but recommended)
 
 Any text editor works, but VS Code gives you IntelliSense and a debugger:

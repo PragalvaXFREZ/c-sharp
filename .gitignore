@@ -4,6 +4,11 @@ obj/
 publish/
 TestResults/
 
+# Local SQLite databases
+*.db
+*.db-shm
+*.db-wal
+
 # IDE / user-specific files
 .vs/
 .idea/
