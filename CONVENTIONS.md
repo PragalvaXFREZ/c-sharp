@@ -4,9 +4,10 @@ Simple rules for keeping this coursework repo (CSC367 – .NET Centric Computing
 
 ## Layout
 
-- Every lab exercise or topic demo is its own project under `src/`, e.g. `src/EventExample/`.
+- Group projects by syllabus unit under `src/unit<N>/`, e.g. `src/unit1/EventExample/`.
+- Every lab exercise or topic demo is its own project inside its unit directory.
 - Every project is registered in `College.sln`:
-  `dotnet sln add src/<ProjectName>/<ProjectName>.csproj`
+  `dotnet sln add src/unit<N>/<ProjectName>/<ProjectName>.csproj`
 - Keep each example small and self-contained — one concept per project.
 
 ## Naming
@@ -20,7 +21,7 @@ Simple rules for keeping this coursework repo (CSC367 – .NET Centric Computing
 
 - This repo is developed on Ubuntu. Target plain `net8.0` only — no
   `net8.0-windows`, WinForms, or WPF (they break `dotnet build College.sln` on Linux).
-  `ConsoleApp9` predates this rule and is the known exception.
+  `src/unit1/ConsoleApp9` predates this rule and is the known exception.
 
 ## Commits
 

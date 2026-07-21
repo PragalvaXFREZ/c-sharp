@@ -37,8 +37,8 @@ cd c-sharp
 ## 3. Run a project
 
 ```bash
-dotnet run --project src/College
-dotnet run --project src/EventExample
+dotnet run --project src/unit1/College
+dotnet run --project src/unit1/EventExample
 ```
 
 That's it. `dotnet` compiles and runs in one step.
@@ -55,7 +55,7 @@ Any text editor works, but VS Code gives you IntelliSense and a debugger:
 
 ## Honest notes / known issues
 
-- `src/ConsoleApp9` is a **Windows Forms** app — it only builds and runs on Windows.
+- `src/unit1/ConsoleApp9` is a **Windows Forms** app — it only builds and runs on Windows.
   Because of it, `dotnet build College.sln` **fails on Linux**; build or run projects
   individually instead (as shown above). Every other project is fully cross-platform.
 - No Visual Studio, ever: `dotnet new`, `build`, `run`, and `publish` from the

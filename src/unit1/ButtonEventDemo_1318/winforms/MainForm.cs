@@ -3,7 +3,7 @@
 // Linux .NET); run it with Mono instead, which implements WinForms on Linux:
 //
 //   sudo apt install -y mono-devel
-//   mcs -r:System.Windows.Forms -r:System.Drawing src/ButtonEventDemo_1318/winforms/MainForm.cs -out:ButtonEventDemo.exe
+//   mcs -r:System.Windows.Forms -r:System.Drawing src/unit1/ButtonEventDemo_1318/winforms/MainForm.cs -out:ButtonEventDemo.exe
 //   mono ButtonEventDemo.exe
 //
 using System;
