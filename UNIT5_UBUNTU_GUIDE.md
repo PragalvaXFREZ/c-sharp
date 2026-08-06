@@ -12,8 +12,9 @@ The result is:
 - a repository-local `dotnet-ef` command; and
 - a repeatable migration and verification workflow.
 
-This is the environment setup and foundation for Unit 5. The full MVC CRUD
-screens and the optional database-first exercise are separate follow-up work.
+This is the environment setup and foundation for Unit 5. It also documents the
+database-first console exercise. The full MVC CRUD screens are separate
+follow-up work.
 
 ## 1. Understand the platform substitutions
 
@@ -208,7 +209,79 @@ Return to the first terminal and press `Ctrl+C` to stop the server. An HTTPS
 redirection warning can appear because this verification deliberately uses a
 temporary HTTP-only address; it does not mean the application failed.
 
-## 9. Troubleshooting
+## 9. Database-first console exercise
+
+The class handout's database-first example is kept in
+`src/unit5/DatabaseWithCode_1318`. On Ubuntu, SQLite replaces the handout's
+Windows-only LocalDB and Package Manager Console commands.
+
+First, restore the local EF command and add the matching EF Core packages:
+
+```bash
+dotnet tool restore
+dotnet add src/unit5/DatabaseWithCode_1318 \
+  package Microsoft.EntityFrameworkCore.Sqlite --version 8.0.21
+dotnet add src/unit5/DatabaseWithCode_1318 \
+  package Microsoft.EntityFrameworkCore.Design --version 8.0.21
+```
+
+Create the database before scaffolding. At the `sqlite>` prompt, the final
+column must not end with a comma:
+
+```bash
+sqlite3 src/unit5/DatabaseWithCode_1318/db_mydatabase_unit5.db
+```
+
+```sql
+CREATE TABLE TbStudents (
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL,
+    Address TEXT NOT NULL,
+    Gender TEXT NOT NULL,
+    Salary NUMERIC NOT NULL
+);
+
+.tables
+.quit
+```
+
+Generate the entity and `DbContext` classes from that existing schema:
+
+```bash
+dotnet tool run dotnet-ef dbcontext scaffold \
+  "Data Source=db_mydatabase_unit5.db" \
+  Microsoft.EntityFrameworkCore.Sqlite \
+  --project src/unit5/DatabaseWithCode_1318 \
+  --startup-project src/unit5/DatabaseWithCode_1318 \
+  --output-dir Models \
+  --context-dir Models \
+  --context DbMydatabaseUnit5Context \
+  --no-onconfiguring
+```
+
+The expected generated files are `Models/TbStudent.cs` and
+`Models/DbMydatabaseUnit5Context.cs`. The scaffold command omits connection
+configuration from generated source; `Program.cs` supplies the local database
+path at runtime.
+
+Build the project and run the PDF's save, update, load, and delete sequence:
+
+```bash
+dotnet build src/unit5/DatabaseWithCode_1318
+find src/unit5/DatabaseWithCode_1318/Models -maxdepth 1 -type f | sort
+dotnet run --project src/unit5/DatabaseWithCode_1318 -- \
+  src/unit5/DatabaseWithCode_1318/db_mydatabase_unit5.db
+```
+
+The run creates one student, updates and prints it, then deletes the same row.
+Using the generated identity value instead of a hardcoded ID makes repeated
+runs safe.
+
+If the database schema changes, run the same scaffold command with `--force`.
+That overwrites generated files, so do not place handwritten changes in them.
+The `.db` file is ignored by Git and should not be committed.
+
+## 10. Troubleshooting
 
 ### `dotnet ef` is not found
 
@@ -263,7 +336,10 @@ dotnet ef database update \
 - [ ] `dotnet ef migrations list` shows `InitialCreate`.
 - [ ] `dotnet ef database update` succeeds.
 - [ ] The MVC home page returns HTTP 200.
+- [ ] The database-first scaffold generates `TbStudent` and
+      `DbMydatabaseUnit5Context`.
+- [ ] The database-first console project completes its CRUD demonstration.
 - [ ] No generated `.db` file is staged for commit.
 
-When every item is checked, the Ubuntu database environment is ready. Full EF
-Core CRUD actions and views are the next implementation milestone.
+When every item is checked, the Ubuntu database environment is ready. Full MVC
+CRUD actions and views are the next implementation milestone.
