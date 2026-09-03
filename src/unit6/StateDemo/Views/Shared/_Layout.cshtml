@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - StateDemo</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a class="brand" asp-controller="Home" asp-action="Index">StateDemo</a>
+            <a asp-controller="Cookie" asp-action="Index">Cookies</a>
+            <a asp-controller="Session" asp-action="Index">Session</a>
+            <a asp-controller="QueryString" asp-action="Index">Query strings</a>
+            <a asp-controller="HiddenField" asp-action="Index">Hidden fields</a>
+        </nav>
+    </header>
+    <main class="container">
+        @RenderBody()
+    </main>
+</body>
+</html>

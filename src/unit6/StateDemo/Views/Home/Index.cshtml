@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "State Management";
+}
+
+<h1>ASP.NET Core state management</h1>
+<p>This project demonstrates the four techniques covered in Chapter 6.</p>
+
+<div class="card-grid">
+    <a class="card" asp-controller="Cookie" asp-action="Index">
+        <strong>Cookies</strong>
+        <span>Store a small value in the browser.</span>
+    </a>
+    <a class="card" asp-controller="Session" asp-action="Index">
+        <strong>Session state</strong>
+        <span>Keep user-specific data on the server.</span>
+    </a>
+    <a class="card" asp-controller="QueryString" asp-action="Index">
+        <strong>Query strings</strong>
+        <span>Pass values in a URL.</span>
+    </a>
+    <a class="card" asp-controller="HiddenField" asp-action="Index">
+        <strong>Hidden fields</strong>
+        <span>Round-trip a value through an HTML form.</span>
+    </a>
+</div>

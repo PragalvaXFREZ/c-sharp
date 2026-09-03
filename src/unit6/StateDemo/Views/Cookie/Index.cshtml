@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Cookies";
+    string? userName = ViewData["UserName"] as string;
+}
+
+<h1>Cookies</h1>
+<p>A cookie stores a small value in the browser and sends it with later requests.</p>
+
+@if (string.IsNullOrEmpty(userName))
+{
+    <form method="post" class="panel">
+        <label for="userName">Your name</label>
+        <input id="userName" name="userName" required />
+        <span asp-validation-for="@userName"></span>
+        <button type="submit">Save cookie</button>
+    </form>
+}
+else
+{
+    <div class="panel">
+        <p>Welcome back, <strong>@userName</strong>.</p>
+        <form asp-action="Remove" method="post">
+            <button type="submit" class="secondary">Forget cookie</button>
+        </form>
+    </div>
+}

@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Session State";
+    string? userName = ViewData["UserName"] as string;
+}
+
+<h1>Session state</h1>
+<p>Session data is stored on the server and associated with a browser session.</p>
+
+@if (TempData["Message"] is string message)
+{
+    <p class="notice">@message</p>
+}
+
+<div class="panel">
+    <p>Visits in this session: <strong>@ViewData["VisitCount"]</strong></p>
+    @if (!string.IsNullOrEmpty(userName))
+    {
+        <p>Stored name: <strong>@userName</strong></p>
+    }
+    <form asp-action="Save" method="post">
+        <label for="userName">Name to store</label>
+        <input id="userName" name="userName" value="@userName" required />
+        <button type="submit">Save to session</button>
+    </form>
+    <form asp-action="Clear" method="post" class="inline-form">
+        <button type="submit" class="secondary">Clear session</button>
+    </form>
+</div>
