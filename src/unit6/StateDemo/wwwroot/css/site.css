@@ -8,10 +8,6 @@
 * { box-sizing: border-box; }
 body { margin: 0; }
 .container { width: min(920px, calc(100% - 2rem)); margin-inline: auto; }
-header { background: #fff; border-bottom: 1px solid #dbe1ea; }
-nav { min-height: 64px; display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
-nav a { color: #334155; text-decoration: none; }
-nav .brand { color: #172033; font-weight: 750; margin-right: auto; }
 main { padding-block: 3rem; }
 h1 { margin-top: 0; font-size: clamp(2rem, 6vw, 3.25rem); line-height: 1.05; }
 p { color: #536078; line-height: 1.6; }
@@ -33,7 +29,5 @@ button.secondary { background: #e7ebf1; color: #243047; }
 code { background: #e7ebf1; padding: .15rem .3rem; border-radius: 4px; }
 
 @media (max-width: 660px) {
-    nav { padding-block: .85rem; gap: .8rem 1rem; }
-    nav .brand { width: 100%; }
     main { padding-block: 2rem; }
 }
