@@ -1,0 +1,25 @@
+@model User?
+@{
+    ViewData["Title"] = "Query Strings";
+    bool hasQuery = (bool)(ViewData["HasQuery"] ?? false);
+}
+
+<h1>Query strings</h1>
+<p>The form uses HTTP GET, so its values appear in the URL and bind to a model.</p>
+
+<form method="get" class="panel">
+    <label for="Name">Name</label>
+    <input id="Name" name="Name" value="@Model?.Name" required />
+    <label for="Age">Age</label>
+    <input id="Age" name="Age" type="number" min="1" max="120" value="@Model?.Age" required />
+    <button type="submit">Create query string</button>
+</form>
+
+@if (hasQuery && Model is not null)
+{
+    <div class="result">
+        <strong>Model-bound result</strong>
+        <span>Name: @Model.Name</span>
+        <span>Age: @Model.Age</span>
+    </div>
+}

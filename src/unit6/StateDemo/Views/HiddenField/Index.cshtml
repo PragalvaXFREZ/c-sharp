@@ -1,0 +1,25 @@
+@model User
+@{
+    ViewData["Title"] = "Hidden Fields";
+}
+
+<h1>Hidden fields</h1>
+<p>The user ID is included in the form submission without being shown as an editable field.</p>
+
+@if (ViewData["Message"] is string message)
+{
+    <p class="notice">@message</p>
+}
+
+<form method="post" class="panel">
+    <input asp-for="Id" type="hidden" />
+    <label asp-for="Name"></label>
+    <input asp-for="Name" />
+    <span asp-validation-for="Name"></span>
+    <label asp-for="Age"></label>
+    <input asp-for="Age" type="number" />
+    <span asp-validation-for="Age"></span>
+    <button type="submit">Submit hidden value</button>
+</form>
+
+<p class="hint">Inspect the page source to find <code>name="Id" value="@Model.Id"</code>.</p>
