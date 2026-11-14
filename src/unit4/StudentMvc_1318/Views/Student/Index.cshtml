@@ -1,0 +1,24 @@
+@model List<StudentMvc_1318.Models.Student>
+@{
+    ViewData["Title"] = "Student Records";
+}
+
+<h2>Student Records</h2>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+    </tr>
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td>@student.Id</td>
+            <td>@student.Name</td>
+            <td>@student.Email</td>
+            <td>@student.Address</td>
+        </tr>
+    }
+</table>
