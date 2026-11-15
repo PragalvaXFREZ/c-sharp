@@ -1,0 +1,42 @@
+@model Student
+@{
+    ViewData["Title"] = "Student Registration";
+}
+
+<h2>Student Registration Form</h2>
+
+<form asp-action="Register" method="post">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div class="field">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Address">Address:</label>
+        <input asp-for="Address" />
+        <span asp-validation-for="Address"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Phone">Phone:</label>
+        <input asp-for="Phone" />
+        <span asp-validation-for="Phone"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Age">Age:</label>
+        <input asp-for="Age" type="number" />
+        <span asp-validation-for="Age"></span>
+    </div>
+
+    <button type="submit">Register</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
