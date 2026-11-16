@@ -1,0 +1,28 @@
+@model Student
+@{
+    ViewData["Title"] = "Edit";
+}
+<h1>Edit Student</h1>
+<hr />
+<form asp-action="Edit" method="post">
+    @* Hidden field keeps the student's ID between the GET and the POST. *@
+    <input type="hidden" asp-for="Id" />
+    <div>
+        <label asp-for="Name"></label><br />
+        <input asp-for="Name" />
+    </div>
+    <div>
+        <label asp-for="Age"></label><br />
+        <input asp-for="Age" />
+    </div>
+    <br />
+    <input type="submit" value="Save" />
+</form>
+
+@if (ViewBag.Id != null)
+{
+    <p>TempData: @TempData["Message"]</p>
+    <p>Submitted ID (ViewBag): @ViewBag.Id</p>
+    <p>Submitted Name (ViewBag): @ViewBag.Name</p>
+    <p>Submitted Age (ViewBag): @ViewBag.Age</p>
+}
