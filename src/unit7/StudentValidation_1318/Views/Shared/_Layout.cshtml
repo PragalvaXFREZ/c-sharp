@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - StudentValidation_1318</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .field { margin-bottom: 14px; }
+        .field label { display: inline-block; width: 80px; }
+        .field input { padding: 4px; width: 220px; }
+        .field-validation-error { color: red; font-weight: bold; margin-left: 8px; }
+        .input-validation-error { border: 1px solid red; }
+    </style>
+</head>
+<body>
+    @RenderBody()
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

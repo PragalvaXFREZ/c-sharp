@@ -1,0 +1,12 @@
+@model Student
+@{
+    ViewData["Title"] = "Registration Successful";
+}
+
+<h2>Registration Successful</h2>
+<p><strong>Name:</strong> @Model.Name</p>
+<p><strong>Email:</strong> @Model.Email</p>
+<p><strong>Address:</strong> @Model.Address</p>
+<p><strong>Phone:</strong> @Model.Phone</p>
+<p><strong>Age:</strong> @Model.Age</p>
+<a asp-action="Register">Register another student</a>
