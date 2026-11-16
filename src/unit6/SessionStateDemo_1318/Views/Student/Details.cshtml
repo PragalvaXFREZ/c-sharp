@@ -1,0 +1,14 @@
+@model User
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Details</h1>
+<h4>User (read from Session)</h4>
+<hr />
+<dl>
+    <dt>Name:</dt>
+    <dd>@Model.Name</dd>
+    <dt>Age:</dt>
+    <dd>@Model.Age</dd>
+</dl>
+<a asp-action="Index">Back</a>

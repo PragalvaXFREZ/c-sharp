@@ -1,0 +1,23 @@
+@model string?
+@{
+    ViewData["Title"] = "Cookies";
+}
+<h1>Cookies</h1>
+@if (!string.IsNullOrWhiteSpace(Model))
+{
+    <p>Welcome back, @Model</p>
+    <form asp-action="Index" method="post">
+        <label>Change your name: </label>
+        <input type="text" name="userName" value="@Model" />
+        <input type="submit" value="Update" />
+    </form>
+    <p><a asp-action="RemoveCookie">Forget me</a></p>
+}
+else
+{
+    <form asp-action="Index" method="post">
+        <label>Enter your name: </label>
+        <input type="text" name="userName" />
+        <input type="submit" value="Save" />
+    </form>
+}
